@@ -1,0 +1,7 @@
+.header {
+    width: calc(100% - 200px*2);
+    margin: 45px auto 40px auto;
+    min-height: 74px;
+    border-bottom: 1px solid #545454;
+    z-index: 2;
+}
