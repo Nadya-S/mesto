@@ -15,53 +15,56 @@
       <section class="profile">
         <img class="profile__avatar" src="images/kusto.jpg" alt="аватар">
         <div class="profile__info">
-          <p class="profile__name">Жак-Ив Кусто<button class="button profile__edit-button"><img src="images/Vector.png"></button></p>
-          <p class="profile__about">Исследователь океана</p>
+          <div class="profile__edit-form">
+            <p class="profile__name">Жак-Ив Кусто</p>
+            <p class="profile__about">Исследователь океана</p>
+          </div>  
+          <button class="button profile__edit-button"></button>
         </div>
-        <button class="button profile__add-button"><img src="images/plus.svg"></button> 
+        <button class="button profile__add-button"></button> 
       </section>
       <section class="places">
         <ul class="list places__list">
           <li class="place">
-            <img src="images/paris.jpg" alt="Париж" class="place__image">
+            <img src="images/ladoga.jpg" alt="Ладога" class="place__image">
             <div class="place__description">
-              <p class="place__name">Париж</p>
-              <img src="images/like.svg" alt="сердечко" class="place__like">
+              <p class="place__name">Ладога</p>
+              <button class="button place__like-button"></button>
             </div>
           </li>
           <li class="place">
-            <img src="images/london.jpg" alt="Лондон" class="place__image">
+            <img src="images/saint-petersburg.jpg" alt="Санкт-Петербург" class="place__image">
             <div class="place__description">
-              <p class="place__name">Лондон</p>
-              <img src="images/like.svg" alt="сердечко" class="place__like">
+              <p class="place__name">Санкт-Петербуг</p>
+              <button class="button place__like-button"></button>
             </div>
           </li>
           <li class="place">
-            <img src="images/chicago.jpg" alt="Чикаго" class="place__image">
+            <img src="images/baykal.jpg" alt="Байкал" class="place__image">
             <div class="place__description">
-              <p class="place__name">Чикаго</p>
-              <img src="images/like.svg" alt="сердечко" class="place__like">
+              <p class="place__name">Байкал</p>
+              <button class="button place__like-button"></button>
             </div>
           </li>
           <li class="place">
-            <img src="images/brazil.jpg" alt="Бразилия" class="place__image">
+            <img src="images/dombay.jpg" alt="Домбай" class="place__image">
             <div class="place__description">
-              <p class="place__name">Бразилия</p>
-              <img src="images/like.svg" alt="сердечко" class="place__like">
+              <p class="place__name">Домбай</p>
+              <button class="button place__like-button"></button>
             </div>
           </li>
           <li class="place">
-            <img src="images/iceland.jpg" alt="Исландия" class="place__image">
+            <img src="images/kamchatka.jpg" alt="Камчатка" class="place__image">
             <div class="place__description">
-              <p class="place__name">Исландия</p>
-              <img src="images/like.svg" alt="сердечко" class="place__like">
+              <p class="place__name">Камчатка</p>
+              <button class="button place__like-button"></button>
             </div>
           </li>
           <li class="place">
-            <img src="images/venice.jpg" alt="Венеция" class="place__image">
+            <img src="images/karelia.jpg" alt="Карелия" class="place__image">
             <div class="place__description">
-              <p class="place__name">Венеция</p>
-              <img src="images/like.svg" alt="сердечко" class="place__like">
+              <p class="place__name">Карелия</p>
+              <button class="button place__like-button"></button>
             </div>
           </li>
         </ul>
@@ -70,6 +73,18 @@
     <footer class="footer">
         <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
-  </div>  
+  </div>
+  <section class="popup popup_opened">
+    <form class="popup__container">
+      <button class="button popup__button-close"></button>
+      <p class="popup__title">Редактировать профиль</p>
+        <div class="popup__input">
+          <input type="text" placeholder="Имя" class="input popup__input-name">
+          <input type="text" placeholder="О себе" class="input popup__input-about">
+          <button class="button popup__button-save">Сохранить</button>
+        </div>
+    </form>
+  </section>
+  <script src="scripts/index.js"></script>
 </body>
 </html>

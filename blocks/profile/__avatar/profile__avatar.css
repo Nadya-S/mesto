@@ -2,5 +2,11 @@
     border-radius: 50%;
     width: 120px;
     height: 120px;
-    margin-right: 30px;
+    grid-area: avatar;
+}
+
+@media screen and (max-width: 600px) {
+    .profile__avatar {
+        margin: 0 auto;
+    }
 }
