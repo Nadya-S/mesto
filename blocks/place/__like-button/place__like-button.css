@@ -6,3 +6,7 @@
   background-position: center;
   margin: auto 0;
 }
+
+.place__like-button:active {
+  background: url(../../../images/blackhurt.png);
+}

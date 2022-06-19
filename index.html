@@ -15,10 +15,10 @@
       <section class="profile">
         <img class="profile__avatar" src="images/kusto.jpg" alt="аватар">
         <div class="profile__info">
-          <div class="profile__edit-form">
+          <form class="profile__edit-form">
             <p class="profile__name">Жак-Ив Кусто</p>
             <p class="profile__about">Исследователь океана</p>
-          </div>  
+          </form>  
           <button class="button profile__edit-button"></button>
         </div>
         <button class="button profile__add-button"></button> 
@@ -35,7 +35,7 @@
           <li class="place">
             <img src="images/saint-petersburg.jpg" alt="Санкт-Петербург" class="place__image">
             <div class="place__description">
-              <p class="place__name">Санкт-Петербуг</p>
+              <p class="place__name">Санкт-Петербург</p>
               <button class="button place__like-button"></button>
             </div>
           </li>
@@ -74,14 +74,14 @@
         <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
   </div>
-  <section class="popup popup_opened">
+  <section class="popup">
     <form class="popup__container">
       <button class="button popup__button-close"></button>
       <p class="popup__title">Редактировать профиль</p>
         <div class="popup__input">
           <input type="text" placeholder="Имя" class="input popup__input-name">
           <input type="text" placeholder="О себе" class="input popup__input-about">
-          <button class="button popup__button-save">Сохранить</button>
+          <button class="button popup__button-save" type="submit">Сохранить</button>
         </div>
     </form>
   </section>
