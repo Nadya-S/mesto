@@ -6,5 +6,13 @@
   line-height: 1.22;
   min-height: 27px;
   border: none;
-  border-bottom: 1px solid rgba(000, 0, 0, .2);
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  width: 358px;
+  padding: 0;
+}
+
+@media screen and (max-width: 550px) {
+  .input {
+    width: 238px;
+  }
 }
