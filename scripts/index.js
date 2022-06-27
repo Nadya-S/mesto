@@ -39,9 +39,9 @@ const initialPlaces = [
   initialPlaces.forEach(function (element) {
     const placeElement = placeTemplate.cloneNode(true);
   
-    placeElement.querySelector('.place__name').textContent = element.name; // Укажите здесь значение поля name каждого перебираемого элемента;
-    placeElement.querySelector('.place__image').alt = element.name; // Укажите здесь значение поля career каждого перебираемого элемента;
-    placeElement.querySelector('.place__image').src = element.link; // Укажите здесь значение поля films каждого перебираемого элемента;
+    placeElement.querySelector('.place__name').textContent = element.name;
+    placeElement.querySelector('.place__image').alt = element.name;
+    placeElement.querySelector('.place__image').src = element.link;
   
     placesList.append(placeElement);
   
