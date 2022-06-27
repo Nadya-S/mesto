@@ -9,4 +9,5 @@
   white-space: nowrap;
   overflow: hidden;
   width: 85%;
+  max-width: 180px;
 }

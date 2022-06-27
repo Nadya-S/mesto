@@ -6,6 +6,46 @@ let aboutInput = document.querySelector('.popup__input_type_about');
 let formElement = document.querySelector('.popup__container');
 let profileName = document.querySelector('.profile__name');
 let profileAbout = document.querySelector('.profile__about');
+const placesList = document.querySelector('.places__list');
+const placeTemplate = document.querySelector('.place-template').content;
+
+const initialPlaces = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ];
+
+  initialPlaces.forEach(function (element) {
+    const placeElement = placeTemplate.cloneNode(true);
+  
+    placeElement.querySelector('.place__name').textContent = element.name; // Укажите здесь значение поля name каждого перебираемого элемента;
+    placeElement.querySelector('.place__image').alt = element.name; // Укажите здесь значение поля career каждого перебираемого элемента;
+    placeElement.querySelector('.place__image').src = element.link; // Укажите здесь значение поля films каждого перебираемого элемента;
+  
+    placesList.append(placeElement);
+  
+  });
 
 
 editButton.addEventListener('click', openPopup);
