@@ -33,18 +33,28 @@
         <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
   </div>
-  <div class="popup">
+  <div class="popup edit-profile-popup">
     <form class="popup__container">
       <button class="button popup__button-close"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <input type="text" placeholder="Имя" class="popup__input popup__input_type_name" name="name">
-      <input type="text" placeholder="О себе" class="popup__input popup__input_type_about" name="about">
-      <button class="button popup__button-save" type="submit">Сохранить</button>
+      <input type="text" placeholder="Имя" class="popup__input popup__input_type_name">
+      <input type="text" placeholder="О себе" class="popup__input popup__input_type_about">
+      <button class="button popup__button-save" type="submit" id="button-save-profile">Сохранить</button>
+    </form>
+  </div>
+  <div class="popup add-place-popup">
+    <form class="popup__container" id="placeform">
+      <button class="button popup__button-close"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <input type="text" placeholder="Название" class="popup__input popup__input_type_name" id="card-name">
+      <input type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_link">
+      <button class="button popup__button-save" type="submit" id="button-save-card"> Сохранить</button>
     </form>
   </div>
   <template class="place-template">
     <li class="place">
       <img src="" alt="" class="place__image">
+      <button class="button place__delete-button"></button>
       <div class="place__description">
         <h2 class="place__name"></h2>
         <button class="button place__like-button"></button>
