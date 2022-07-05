@@ -135,7 +135,7 @@ function openImageModal (evt) {
 
 //open image
 function handleOpenImage (name, link) {
-  imageModal.querySelector('.popup_img-name').textContent = name;
+  imageModal.querySelector('#popup_img-name').textContent = name;
   imageModal.querySelector('.popup__big-image').src = link;
 }
 
