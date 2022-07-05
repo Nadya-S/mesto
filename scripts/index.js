@@ -99,7 +99,7 @@ function addCard(cardName, cardLink) {
     placeElement.querySelector('.place__name').textContent = cardName;
     placeElement.querySelector('.place__image').alt = cardName;
     placeElement.querySelector('.place__image').src = cardLink;
-    //сет
+    
     setEventListeners(placeElement);
   
     placesList.prepend(placeElement);
@@ -116,11 +116,6 @@ saveCardButton.addEventListener('click', function (event) {
     cardLink.value = '';
     closePopup(event);
   });
-
-  // enter
-//   nameInput.addEventListener('keydown', function(event){
-//     alert(event.keyCode);
-// } );
 
 // удаление карточки 
 function handleDelete(evt) {
