@@ -1,12 +1,14 @@
-const editProfileModal = document.querySelector('.popup_edit-profile');
-const addPlaceModal = document.querySelector('.popup_add-place');
-const imageModal = document.querySelector('.popup_open-image');
-const editButton = document.querySelector('.profile__edit-button');
-const addButton = document.querySelector('.profile__add-button');
-const closeButtonPlace = addPlaceModal.querySelector('.popup__button-close');
-const closeButtonProfile = editProfileModal.querySelector('.popup__button-close');
-const closeButtonImage = imageModal.querySelector('.popup__button-close');
 const popup = document.querySelector('.popup');
+const popupEditProfile = document.querySelector('.popup_edit-profile');
+const popupAddPlace = document.querySelector('.popup_add-place');
+const popupImage = document.querySelector('.popup_open-image');
+const buttonEdit = document.querySelector('.profile__edit-button');
+const buttonAdd = document.querySelector('.profile__add-button');
+const buttonClosePlace = popupAddPlace.querySelector('.popup__button-close');
+const buttonCloseProfile = popupEditProfile.querySelector('.popup__button-close');
+const buttonCloseImage = popupImage.querySelector('.popup__button-close');
+const buttonSaveCard = document.querySelector('#button-save-card');
+const buttonSaveProfile = document.querySelector('#button-save-profile');
 const nameInput = document.querySelector('.popup__input_type_name');
 const aboutInput = document.querySelector('.popup__input_type_about');
 const formElement = document.querySelector('.popup__container');
@@ -14,8 +16,6 @@ const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 const placesList = document.querySelector('.places__list');
 const placeTemplate = document.querySelector('.place-template').content;
-const saveCardButton = document.querySelector('#button-save-card');
-const saveProfileButton = document.querySelector('#button-save-profile');
 
 const initialPlaces = [
     {
@@ -62,25 +62,25 @@ const openModalWindow = (popup) => {
  }
 // открытие попапа профиля и заполнение полей
 const handleEditProfile = () => {
-   openModalWindow(editProfileModal);
+   openModalWindow(popupEditProfile);
    nameInput.value = profileName.textContent;
    aboutInput.value = profileAbout.textContent;
 }
 
-editButton.addEventListener('click', handleEditProfile);
-addButton.addEventListener('click', () => openModalWindow(addPlaceModal));
+buttonEdit.addEventListener('click', handleEditProfile);
+buttonAdd.addEventListener('click', () => openModalWindow(popupAddPlace));
 
 // закрытие попапов
 const closePopup = (event) => {
     event.preventDefault();
-    addPlaceModal.classList.remove('popup_opened');
-    editProfileModal.classList.remove('popup_opened');
-    imageModal.classList.remove('popup_opened');
+    popupAddPlace.classList.remove('popup_opened');
+    popupEditProfile.classList.remove('popup_opened');
+    popupImage.classList.remove('popup_opened');
 }
 
-closeButtonPlace.addEventListener('click', closePopup);
-closeButtonProfile.addEventListener('click', closePopup);
-closeButtonImage.addEventListener('click', closePopup);
+buttonClosePlace.addEventListener('click', closePopup);
+buttonCloseProfile.addEventListener('click', closePopup);
+buttonCloseImage.addEventListener('click', closePopup);
 
 // сохранение профиля
 function saveProfileHandler (event) {
@@ -90,7 +90,7 @@ function saveProfileHandler (event) {
     closePopup(event);
 }
 
-saveProfileButton.addEventListener('click', saveProfileHandler);
+buttonSaveProfile.addEventListener('click', saveProfileHandler);
 
 // добавление разметки карточки
 function addCard(cardName, cardLink) {
@@ -105,7 +105,7 @@ function addCard(cardName, cardLink) {
     placesList.prepend(placeElement);
   }
 // сохранение карточки
-saveCardButton.addEventListener('click', function (event) {
+buttonSaveCard.addEventListener('click', function (event) {
     event.preventDefault();
     const cardName = document.querySelector('#card-name');
     const cardLink = document.querySelector('.popup__input_type_link');
@@ -128,15 +128,15 @@ function handleLike(evt) {
 }
 
 //открытие попапа с картинкой
-function openImageModal (evt) {
-      imageModal.classList.add('popup_opened');
+function openPopupImage (evt) {
+      popupImage.classList.add('popup_opened');
       handleOpenImage(evt.target.alt, evt.target.src);
   }
 
 //open image
 function handleOpenImage (name, link) {
-  imageModal.querySelector('#popup_img-name').textContent = name;
-  imageModal.querySelector('.popup__big-image').src = link;
+  popupImage.querySelector('#popup_img-name').textContent = name;
+  popupImage.querySelector('.popup__big-image').src = link;
 }
 
 //set events 
@@ -147,6 +147,6 @@ function setEventListeners (placeElement) {
     likeCardButton.addEventListener('click', handleLike);
 
     const imageButton = placeElement.querySelector('.place__image');
-    imageButton.addEventListener('click', openImageModal);
+    imageButton.addEventListener('click', openPopupImage);
     console.log('listener');
 }
