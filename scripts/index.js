@@ -1,13 +1,15 @@
-const editProfileModal = document.querySelector('.edit-profile-popup');
-const addPlaceModal = document.querySelector('.add-place-popup');
+const editProfileModal = document.querySelector('.popup_edit-profile');
+const addPlaceModal = document.querySelector('.popup_add-place');
+const imageModal = document.querySelector('.popup_open-image');
 const editButton = document.querySelector('.profile__edit-button');
+const addButton = document.querySelector('.profile__add-button');
 const closeButtonPlace = addPlaceModal.querySelector('.popup__button-close');
 const closeButtonProfile = editProfileModal.querySelector('.popup__button-close');
-const addButton = document.querySelector('.profile__add-button');
+const closeButtonImage = imageModal.querySelector('.popup__button-close');
 const popup = document.querySelector('.popup');
 const nameInput = document.querySelector('.popup__input_type_name');
 const aboutInput = document.querySelector('.popup__input_type_about');
-let formElement = document.querySelector('.popup__container');
+const formElement = document.querySelector('.popup__container');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 const placesList = document.querySelector('.places__list');
@@ -41,6 +43,7 @@ const initialPlaces = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ];
+
 // загрузка карточек при старте
   initialPlaces.forEach(function (element) {
     const placeElement = placeTemplate.cloneNode(true);
@@ -51,7 +54,6 @@ const initialPlaces = [
     setEventListeners(placeElement);
   
     placesList.append(placeElement);
-  
   });
 
 // открытие попапов общая
@@ -73,10 +75,12 @@ const closePopup = (event) => {
     event.preventDefault();
     addPlaceModal.classList.remove('popup_opened');
     editProfileModal.classList.remove('popup_opened');
+    imageModal.classList.remove('popup_opened');
 }
 
 closeButtonPlace.addEventListener('click', closePopup);
 closeButtonProfile.addEventListener('click', closePopup);
+closeButtonImage.addEventListener('click', closePopup);
 
 // сохранение профиля
 function saveProfileHandler (event) {
@@ -105,13 +109,19 @@ saveCardButton.addEventListener('click', function (event) {
     event.preventDefault();
     const cardName = document.querySelector('#card-name');
     const cardLink = document.querySelector('.popup__input_type_link');
-  
+
     addCard(cardName.value, cardLink.value);
 
     cardName.value = '';
     cardLink.value = '';
     closePopup(event);
   });
+
+  // enter
+//   nameInput.addEventListener('keydown', function(event){
+//     alert(event.keyCode);
+// } );
+
 // удаление карточки 
 function handleDelete(evt) {
 	evt.target.closest('.place').remove();
@@ -122,6 +132,18 @@ function handleLike(evt) {
   evt.target.classList.toggle('place__like-button_active');
 }
 
+//открытие попапа с картинкой
+function openImageModal (evt) {
+      imageModal.classList.add('popup_opened');
+      handleOpenImage(evt.target.alt, evt.target.src);
+  }
+
+//open image
+function handleOpenImage (name, link) {
+  imageModal.querySelector('.popup_img-name').textContent = name;
+  imageModal.querySelector('.popup__big-image').src = link;
+}
+
 //set events 
 function setEventListeners (placeElement) {
     const deleteCardButton = placeElement.querySelector('.place__delete-button')
@@ -129,4 +151,7 @@ function setEventListeners (placeElement) {
     const likeCardButton = placeElement.querySelector('.place__like-button');
     likeCardButton.addEventListener('click', handleLike);
 
+    const imageButton = placeElement.querySelector('.place__image');
+    imageButton.addEventListener('click', openImageModal);
+    console.log('listener');
 }
