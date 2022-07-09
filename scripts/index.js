@@ -46,7 +46,6 @@ buttonsClose.forEach((buttonsClose) => {
 
 // сохранение профиля
 function saveProfileHandler (event) {
-  console.log('save-profile');
     event.preventDefault(); 
     profileName.textContent = nameInput.value;
     profileAbout.textContent = aboutInput.value;
