@@ -4,8 +4,8 @@ const popupAddPlace = document.querySelector('.popup_add-place');
 const popupImage = document.querySelector('.popup_open-image');
 const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
-const nameInput = document.querySelector('.popup__input_type_name');
-const aboutInput = document.querySelector('.popup__input_type_about');
+const nameInput = document.querySelector('#name-input');
+const aboutInput = document.querySelector('#about-input');
 const formElement = document.querySelector('.popup__container');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
@@ -21,6 +21,7 @@ const placeForm = document.querySelector('#placeform');
 // открытие попапов общая ОК
 const openModalWindow = (popup) => {
     popup.classList.add('popup_opened');
+    enableValidation();
  }
 
 // открытие попапа профиля и заполнение полей
@@ -75,8 +76,8 @@ function addCard(cardName, cardLink) {
 // сохранение карточки
 placeForm.addEventListener('submit', function (event) {
     event.preventDefault();
-    const cardName = document.querySelector('#card-name');
-    const cardLink = document.querySelector('.popup__input_type_link');
+    const cardName = document.querySelector('#card-name-input');
+    const cardLink = document.querySelector('#url-input');
 
     addCard(cardName.value, cardLink.value);
     placeForm.reset();
