@@ -16,7 +16,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
     errorElement.classList.add(allSelectors.errorClass);
 };
 
-  // функция скрывающая ошибку
+// функция скрывающая ошибку
 const hideInputError = (formElement, inputElement) => {
     // Находим элемент ошибки
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -63,7 +63,7 @@ const toggleButtonState = (inputList, buttonElement) => {
       buttonElement.removeAttribute('disabled');
       buttonElement.classList.remove(allSelectors.inactiveButtonClass);
     }
-  }; 
+}; 
 
 // функция слушатели событий
 const setEventListenersForm = (formElement) => {
