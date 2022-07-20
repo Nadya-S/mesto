@@ -1,4 +1,3 @@
-const popup = document.querySelector('.popup');
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const popupAddPlace = document.querySelector('.popup_add-place');
 const popupImage = document.querySelector('.popup_open-image');
@@ -6,12 +5,14 @@ const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
 const nameInput = document.querySelector('#name-input');
 const aboutInput = document.querySelector('#about-input');
-const formElement = document.querySelector('.popup__container');
+const formProfile = document.querySelector('#form-profile');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 const placesList = document.querySelector('.places__list');
 const placeTemplate = document.querySelector('.place-template').content;
 const placeForm = document.querySelector('#placeform');
+
+enableValidation(allSelectors);
 
 // загрузка карточек при старте
   initialPlaces.forEach(function (element) {
@@ -19,21 +20,20 @@ const placeForm = document.querySelector('#placeform');
   });
 
 // открытие попапов общая
-const openModalWindow = (popup) => {
+const openPopup = (popup) => {
     popup.classList.add('popup_opened');
-    enableValidation();
     document.addEventListener('keydown', keyHandler);
  };
 
 // открытие попапа профиля и заполнение полей
 const handleEditProfile = () => {
-   openModalWindow(popupEditProfile);
+   openPopup(popupEditProfile);
    nameInput.value = profileName.textContent;
    aboutInput.value = profileAbout.textContent;
 };
 
 buttonEdit.addEventListener('click', handleEditProfile);
-buttonAdd.addEventListener('click', () => openModalWindow(popupAddPlace));
+buttonAdd.addEventListener('click', () => openPopup(popupAddPlace));
 
 // закрытие попапов
 const closePopup = (popup) => {
@@ -51,8 +51,8 @@ buttonsClose.forEach((buttonsClose) => {
 //закрытие попапов через overlay
 const allPopups = document.querySelectorAll('.popup');
 allPopups.forEach((popup) => {
-  popup.addEventListener('click', function(e) {
-    if (!e.target.closest('.popup__container')) {
+  popup.addEventListener('mousedown', function(e) {
+    if (!e.target.closest('.popup__container')&&!e.target.closest('.popup__image-container')) {
       closePopup(popup);
     }
   });
@@ -61,9 +61,8 @@ allPopups.forEach((popup) => {
 //закрытие попапов через esc
 function keyHandler (e) {
     if (e.keyCode === 27) {
-    closePopup(popupAddPlace);
-    closePopup(popupEditProfile);
-    closePopup(popupImage);
+    const openedPopup = document.querySelector('.popup_opened')
+    closePopup(openedPopup);
     }
   };
 
@@ -75,7 +74,7 @@ function saveProfileHandler (event) {
     closePopup(popupEditProfile);
 };
 
-formElement.addEventListener('submit', saveProfileHandler);
+formProfile.addEventListener('submit', saveProfileHandler);
 
 //функция создания карточки
 function renderCard(cardName, cardLink) {
@@ -94,7 +93,14 @@ function addCard(cardName, cardLink) {
     const newCard = renderCard(cardName, cardLink);
     placesList.prepend(newCard);
 };
-  
+ 
+//деактивация кнопки сабмит 
+function inactiveSubmit () {
+  const buttonSubmit = popupAddPlace.querySelector('.popup__button-save');
+    buttonSubmit.setAttribute('disabled', true);
+    buttonSubmit.classList.add('popup__button-save_inactive');
+};
+
 // сохранение карточки
 placeForm.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -104,6 +110,7 @@ placeForm.addEventListener('submit', function (event) {
     addCard(cardName.value, cardLink.value);
     placeForm.reset();
     closePopup(popupAddPlace);
+    inactiveSubmit();
   });
 
 // удаление карточки 
@@ -118,9 +125,8 @@ function handleLike(evt) {
 
 //открытие попапа с картинкой
 function openPopupImage (evt) {
-      popupImage.classList.add('popup_opened');
-      handleOpenImage(evt.target.alt, evt.target.src);
-      document.addEventListener('keydown', keyHandler);
+  openPopup(popupImage);
+  handleOpenImage(evt.target.alt, evt.target.src);
 };
 
 //open image
